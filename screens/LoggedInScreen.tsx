@@ -1,23 +1,25 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { WebView } from 'react-native-webview';
+import { RouteProp } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-const LoggedInScreen = () => {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.text}>You are now logged in!</Text>
-    </View>
-  );
+type RootStackParamList = {
+  Login: undefined;
+  LoggedIn: { uri: string };
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  text: {
-    fontSize: 24,
-  },
-});
+type LoggedInScreenRouteProp = RouteProp<RootStackParamList, 'LoggedIn'>;
+type LoggedInScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'LoggedIn'>;
+
+type Props = {
+  route: LoggedInScreenRouteProp;
+  navigation: LoggedInScreenNavigationProp;
+};
+
+const LoggedInScreen = ({ route }: Props) => {
+  const { uri } = route.params;
+
+  return <WebView source={{ uri: "https://jwbyizeytvnlasmwdkro.supabase.co/auth/v1/verify?token=8785c034b5b89abd5d10771c8784430f9a8d0176cb6a5285f7c8378d&type=magiclink&redirect_to=https://intelli-pic.vercel.app/" }} />;
+};
 
 export default LoggedInScreen;

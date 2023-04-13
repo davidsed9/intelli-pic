@@ -5,6 +5,7 @@ import { Alert } from 'react-native';
 import { NavigationContainer, RouteProp } from '@react-navigation/native';
 import { createNativeStackNavigator, NativeStackNavigationProp } from '@react-navigation/native-stack';
 import LoggedInScreen from './screens/LoggedInScreen';
+import { MyWebScreen } from './MyWeb';
 
 
 
@@ -15,7 +16,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Login">
-        <Stack.Screen name="Login" component={App} />
+        <Stack.Screen name="Login" component={MyWebScreen} />
         <Stack.Screen name="LoggedIn" component={LoggedInScreen} />
       </Stack.Navigator>
     </NavigationContainer>
